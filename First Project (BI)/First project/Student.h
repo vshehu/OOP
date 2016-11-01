@@ -1,49 +1,75 @@
+#include <iostream>
+#include <algorithm>
 #include <string>
-#include<iostream>
 
-#ifndef STUDENT_H
-#define STUDENT_H
 using namespace std;
-
-struct PlaceOfLiving
-{
-	string City;
-	string Country;
-	string Street;
-};
 
 struct Student
 {
 	string ID;
 	string FirstName;
 	string LastName;
-	string Department;
-	string email;
-	PlaceOfLiving Addres;
+	string Email;
+	string Address;
 	string Birthday;
+	string Department;
+
+
+
+void PrintInfo()
+	{
+		cout << "\n ID : " << ID 
+		<< "\n FirstName : " << FirstName
+		<< "\n  LastName : " << LastName 
+		<< "\n Email : " << Email
+		<< "\n address : " << Address
+		<< "\n Birthday : " << Birthday
+		<< "\n Department : " << Department <<endl;
+		
+	}
 };
 
-
-
-void SeerchItUp(Student *a, double n)
-
+struct StudentManager
 {
-	cout<<"Enter a search term..."<<endl;
-	string m;
-	cout<<endl;
-	cin>>m;
-	for(double i=0; i<n;i++)
-	{
-		if(a[i].ID==m)
-		a[i].PrintInformation();
-		
-		else if(a[i].FirstName==m)
-		a[i].PrintInformation();
-		
-		else if(a[i].LastName==m)
-		a[i].PrintInformation();
+	Student *students;
+	int student_nr;
 
+	bool Contains(string base_string, string search_criteria)
+{
+	transform(base_string.begin(), base_string.end(), base_string.begin(), ::tolower);
+	transform(search_criteria.begin(), search_criteria.end(), search_criteria.begin(), ::tolower);
+
+	if (base_string.find(search_criteria) != string::npos)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
-#endif
+	void Search(string search_criteria)
+	{
+		 
+		for (int i = 0; i < student_nr; i++)
+		{
+			if (Contains(students[i].FirstName, search_criteria) || 
+				Contains(students[i].LastName, search_criteria) ||
+				Contains(students[i].ID, search_criteria))
+			{
+				students[i].PrintInfo();
+			}
+		
+		}
+	}
+};
+
+struct LibraryMenagment {
+
+Student st ;
+string books ;
+string author;
+
+};
+
