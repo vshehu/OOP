@@ -9,25 +9,25 @@ protected:
 public:
 	int getA()
 	{
-		return b;
+		return a;
 	}
-	int setA(int w)
+	void setA(int v)
 	{
-		b = w;
+		a = v;
 	}
 	int getB()
 	{
-		return a;
+		return b;
 	}
-	int setB(int h)
+	void setB(int v)
 	{
-		a = h;
+		b = v;
 	}
-	Rectangle(int w, int h)
+	Rectangle(int _a, int _b)
 	{
 		cout << "Initializing a rectangle!" << endl;
-		a = h;
-		b = w;
+		a = _a;
+		b = _b;
 	}
 
 	int Surface()
@@ -47,29 +47,27 @@ class Square : public Rectangle
 public:
 	Square(int a) : Rectangle(a, a)
 	{
-			
+		cout << "Initializing a square!" << endl;
 	}
 
-	int Surface()
-	{
-		cout << "Calculating surface of the square..." << endl;
-		return a * b;
-	}
-	 
 };
 
 class Rhombus : public Rectangle
 {
+private:
+	int _d1;
+	int _d2;
 public:
-	Rhombus(int a) : Rectangle(a, a)
+	Rhombus(int d1, int d2, int a) : Rectangle(a, a)
 	{
-
+		_d1 = d1;
+		_d2 = d2;
 	}
 
 	int Surface()
 	{
 		cout << "Calculating surface of the rhombus..." << endl;
-		return (a * b) / 2;
+		return (_d1 * _d2) / 2;
 	}
 	 
 };
