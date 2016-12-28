@@ -1,0 +1,64 @@
+#include <iostream>
+
+using namespace std;
+
+class Beta
+{
+private:
+	double _a,_b;
+public:
+	double getA()
+	{
+		return _a;
+	}
+
+	double getB()
+	{
+		return _b;
+	}
+
+	double SurfaceRectangle()
+	{
+		return _a * _b;
+	}
+
+	Beta(double a, double b)
+	{
+		_a = a;
+		_b = b;
+	}
+};
+
+class Delta : Beta
+{
+private:
+	double _h;
+public:
+	double getH()
+	{
+		return _h;
+	}
+	double SurfaceParallelepiped()
+	{
+		return _h * getA() * getB();
+	}
+	Delta(double h, double a, double b) : Beta(a,b)
+	{
+		_h = h;
+	}
+	void printInfo()
+	{
+		cout<<" a = " <<getA()
+			<<" b = " <<getB()
+			<<" h = " <<_h;
+	}
+
+};
+int main()
+{
+	Delta d1(3.1 , 2.5, 3.5 );
+	d1.printInfo();
+	cout<<"\nSurface: "<<d1.SurfaceParallelepiped();
+
+	cin.get();
+}
